@@ -36,10 +36,10 @@ SET_PRESSURE_ADVANCE ADVANCE=0.080
     1. `G1 E100 F100` This extrudes 100mm filament with 100mm/min.
 1. Now measure the distance between extruder entry and the mark on the filament. For example, if it is 28mm instead of 20mm (120mm - 100mm) then the extruder is underextruding by 8mm ==> 92mm instead of 100mm. If it shows 15mm then the extruder is OVERextruding by 5mm ==> 105mm.
 
-`c` := current value in `printer.cfg`
-`m` := measured left over filament
-`d` := desired mm
-`n` := new value for `printer.cfg`
+* `c` := current value in `printer.cfg`
+* `m` := measured left over filament
+* `d` := desired mm
+* `n` := new value for `printer.cfg`
 
 `((120 - m) / d) * c = n`
 `((120 - 28) / 100) * 0.010500 = 0,009660`
