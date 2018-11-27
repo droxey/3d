@@ -41,8 +41,8 @@ SET_PRESSURE_ADVANCE ADVANCE=0.080
 * `d` := desired mm
 * `n` := new value for `printer.cfg`
 
-`((120 - m) / d) * c = n`
-`((120 - 28) / 100) * 0.010500 = 0,009660`
-`(92 / 100) * 0.010500 = 0,009660`
+* `((120 - m) / d) * c = n`
+* `((120 - 28) / 100) * 0.010500 = 0,009660`
+* `(92 / 100) * 0.010500 = 0,009660`
 
 For underextrusion, the new value is lower than the old one. Play around with the last two numbers to fine tune.
