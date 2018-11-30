@@ -1,14 +1,14 @@
-# 🖨️ 3d
+# 🖨️ Ender3 + BLTouch + Klipper Configuration
 
 [@droxey](https://github.com/droxey)'s collection of sliced print files for the [Ender3](https://www.creality3d.shop/collections/3d-printer/products/creality-ender-3-3d-printer-economic-ender-diy-kits-with-resume-printing-function-v-slot-prusa-i3-220x220x250mm) 3D printer running the [Klipper](https://github.com/KevinOConnor/klipper/) firmware.
 
-## How to Calibrate Hotend
+## Calibrate Hotend
 
 ```gcode
 PID_CALIBRATE HEATER=extruder TARGET=230
 ```
 
-## How to Calibrate Bed
+## Calibrate Bed
 
 ```gcode
 
@@ -25,7 +25,7 @@ SET_PRESSURE_ADVANCE ADVANCE=0.050
 SET_PRESSURE_ADVANCE ADVANCE=0.080
 ```
 
-## Measure Extruder Steps (Klipper = `mm/step`)
+## Calibrate Extruder (Klipper = `mm/step`)
 
 1. Mark filament 120mm above the entry to extruder.
 1. Heat up the nozzle to desired printing temperature.
@@ -46,3 +46,7 @@ SET_PRESSURE_ADVANCE ADVANCE=0.080
 * `(92 / 100) * 0.010500 = 0,009660`
 
 For underextrusion, the new value is lower than the old one. Play around with the last two numbers to fine tune.
+
+## Install and Configure BLTouch Hardware
+
+Information and docs [found here](https://andrivet.github.io/ADVi3pp-User-Manual/03-BLTouch.html). 
