@@ -6,26 +6,25 @@
 # Default variables for standard Klipper installations.
 # YOU MAY MODIFY THESE FOR CUSTOM INSTALLATIONS.
 USB_DEVICE="/dev/ttyUSB0"
-CONFIG_FILENAME="printer.cfg"
 
 # !!!
 # WARNING: DO NOT MODIFY ANYTHING BELOW THIS LINE UNLESS YOU KNOW WHAT YOU'RE DOING
 #!!!!
 
-bold=`tput smso`
+bold=`tput bold`
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0 && tput rmso`
 datetime=$(date '+%Y%m%d_%H%M%S')
 backup_filename="klipper-${datetime}.tar.gz"
 
-echo -e "${green}\n===\nBacking up your Klipper installation to ${backup_filename}...\n===${reset}"
+echo -e "${bold}${green}\nBacking up Klipper installation to ${backup_filename}...\n${reset}"
 
 # Save a backup of the current klipper installation.
 # Example filename: klipper_20190106_090208.tar.gz
 tar -zcf ${backup_filename} ~/klipper
 
-echo -e "${green}\n===\nUpdating Klipper Codebase...\n===${reset}"
+echo -e "${bold}${green}\nUpdating Klipper Codebase...\n${reset}"
 
 # Navigate to standard Klipper install.
 cd ~/klipper
@@ -34,8 +33,8 @@ cd ~/klipper
 git pull origin master --quiet
 
 # Only build and flash firmware if the working tree has changed.
-if git diff-index --quiet HEAD --; then
-  echo -e "\n${green}===\nUpdating Klipper...\n===${reset}"
+if [[ `git status --porcelain --untracked-files=no` ]]; then
+  echo -e "${bold}${green}\nUpdating Klipper...\n${reset}"
 
   # Update Pi installation as prescribed in the Klipper documentation.
   scripts/install-octopi.sh
@@ -52,11 +51,12 @@ if git diff-index --quiet HEAD --; then
 
   # Start the Klipper service with new firmware.
   sudo service klipper start
-  echo -e "${green}===\nUpdate Complete...\n===${reset}"
+  echo -e "${bold}${green}\nUpdate Complete...${reset}"
 else
-  echo -e "${red}===\nNo updates found.\n===${reset}"
-  echo -e "${green}===\nYour installation is currently up-to-date.\n===${reset}"
+  echo -e "${bold}${red}No changes since last update!${reset}"
 fi
+
+  echo -e "${bold}${green}\n\nYour installation is up-to-date!\n${reset}"
 
 # Error handling.
 # Exit immediately if a command fails.
